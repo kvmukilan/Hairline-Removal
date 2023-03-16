@@ -1,0 +1,12 @@
+import requests
+from bs4 import BeautifulSoup
+
+
+# Making a GET request
+r = requests.get('https://oilprice.com/oil-price-charts/')
+
+# Parsing the HTML
+soup = BeautifulSoup(r.text, "lxml")
+
+prices = soup.find_all("tr", class_= "stripe show_graph")
+print(prices)
